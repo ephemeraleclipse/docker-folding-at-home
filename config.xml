@@ -9,11 +9,11 @@
   <fold-anon v='true'/>
 
   <!-- Slot Control -->
-  <power v='medium'/>
+  <power v='%POWER%'/>
 
   <!-- User Information -->
-  <team v='51'/>
-  <user v='[pc-infopratique]blankoworld'/>
+  <team v='%TEAM%'/>
+  <user v='%USER%'/>
 
   <!-- Folding Slots -->
   <slot id='0' type='CPU'/>
