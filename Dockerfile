@@ -21,9 +21,10 @@ RUN wget -O fahclient_7.4.4_amd64.deb "https://fah.stanford.edu/file-releases/pu
 # Add configuration file to use
 ADD config.xml /etc/fahclient/
 
-RUN sed -i "s/'%USER%'/getenv('USER')/" /etc/fahclient/config.xml
-RUN sed -i "s/'%TEAM%'/getenv('TEAM')/" /etc/fahclient/config.xml
-RUN sed -i "s/'%POWER%'/getenv('POWER')/" /etc/fahclient/config.xml
+RUN sed -i "s/'%USER%'/'"$USER"'/" /etc/fahclient/config.xml
+RUN sed -i "s/'%TEAM%'/'"$TEAM"'/" /etc/fahclient/config.xml
+RUN sed -i "s/'%POWER%'/'"$POWER"'/" /etc/fahclient/config.xml
+RUN sed -i "s/'%PASSKEY%'/'"$PASSKEY"'/" /etc/fahclient/config.xml
 
 RUN chown fahclient:root /etc/fahclient/config.xml
 
