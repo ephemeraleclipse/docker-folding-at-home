@@ -12,7 +12,7 @@ MAINTAINER Olivier Dossmann, olivier+dockerfile@dossmann.net
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install wget
-RUN apt-get install -y wget
+RUN apt-get install -y wget bzip2
 
 # Download and install FAHClient
 RUN wget -O fahclient_7.4.4_amd64.deb "https://fah.stanford.edu/file-releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_7.4.4_amd64.deb" --no-check-certificate \
@@ -20,6 +20,10 @@ RUN wget -O fahclient_7.4.4_amd64.deb "https://fah.stanford.edu/file-releases/pu
 
 # Add configuration file to use
 ADD config.xml /etc/fahclient/
+
+RUN sed -i "s/'%USER%'/getenv('USER')/" /var/www/html/user/config.php
+RUN sed -i "s/'%TEAM%'/getenv('TEAM')/" /var/www/html/user/config.php
+RUN sed -i "s/'%POWER%'/getenv('POWER')/" /var/www/html/user/config.php
 
 RUN chown fahclient:root /etc/fahclient/config.xml
 
