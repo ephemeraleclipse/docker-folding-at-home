@@ -14,6 +14,7 @@
   <!-- User Information -->
   <team v='%TEAM%'/>
   <user v='%USER%'/>
+  <passkey v='%PASSKEY%'/>
 
   <!-- Folding Slots -->
   <slot id='0' type='CPU'/>
